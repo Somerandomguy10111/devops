@@ -30,4 +30,5 @@ runs:
         else
             echo "-> No setup.py found, using tox.ini with requirements environment"
             tox -c $TOX_FILE -e req
+        fi
       shell: bash
