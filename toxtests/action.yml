@@ -21,6 +21,7 @@ runs:
       shell: bash
     - name: Run tox tests
       run: |
+        dirpath=$(pwd)
         TOX_FILE=$(find . -name tox.ini)
         if [ -z "$TOX_FILE" ]; then
           echo "No tox.ini file found. Exiting."
