@@ -31,8 +31,9 @@ runs:
 
         package_file=$(find "$dirpath" -maxdepth 1 \( -name "pyproject.toml" -o -name "setup.py" -o -name "setup.cfg" \) -print -quit)
         if [ -f "$package_file" ]; then
-            echo "-> Found setup.py, using tox.ini with pkg environment"
-            tox -c $TOX_FILE -e pkg
+          file_name=$(basename "$package_file")
+          echo "-> Found $file_name, using tox.ini with pkg environment"
+          tox -c "$TOX_FILE" -e pkg $1
         elif [ -f "requirements.txt" ]; then
             echo "-> Found requirements.txt, using tox.ini with requirements environment"
             tox -c $TOX_FILE -e req
