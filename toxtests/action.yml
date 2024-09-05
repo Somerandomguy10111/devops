@@ -27,15 +27,16 @@ runs:
           exit 1
         fi
         echo "-> Located tox file at $TOX_FILE"
-  
-        if [ -f "setup.py" ]; then
+
+        package_file=$(find "$dirpath" -maxdepth 1 \( -name "pyproject.toml" -o -name "setup.py" -o -name "setup.cfg" \) -print -quit)
+        if [ -f "$package_file" ]; then
             echo "-> Found setup.py, using tox.ini with pkg environment"
             tox -c $TOX_FILE -e pkg
         elif [ -f "requirements.txt" ]; then
             echo "-> Found requirements.txt, using tox.ini with requirements environment"
             tox -c $TOX_FILE -e req
         else
-            echo "Neither setup.py nor requirements.txt found. Nothing to test."
+            echo "Neither pyproject.toml, nor setup.py nor requirements.txt found. Nothing to test."
             exit 0
         fi
       shell: bash
