@@ -21,6 +21,5 @@ runs:
       shell: bash
     - name: Run tox tests
       run: |
-        dirpath=$(pwd)
-        deptry $(dirpath)
+        deptry .
       shell: bash
