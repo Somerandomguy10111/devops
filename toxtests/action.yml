@@ -9,6 +9,7 @@ runs:
       run: |
         python -m pip install --upgrade pip
         pip install tox
+        pip install holytools
       shell: bash
     - name: Run tox tests
       run: |
