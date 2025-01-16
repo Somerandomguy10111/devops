@@ -9,6 +9,13 @@ runs:
       run: |
         python -m pip install --upgrade pip
         pip install deptry
+        if [ -f "requirements.txt" ]; then
+            pip install -r requirements.txt
+        elif [ -f "setup.py" ] || [ -f "pyproject.toml" ] || [ -f "setup.cfg" ]; then
+            pip install .
+        else
+            echo "No recognized dependency file found."
+        fi
       shell: bash
     - name: Run tox tests
       run: |
