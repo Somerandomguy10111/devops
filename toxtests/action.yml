@@ -1,10 +1,5 @@
 name: "Run Unittests via tox"
 description: "Setup Python environment and run tests using tox."
-inputs:
-  python-version:
-    description: "Python version to setup"
-    required: true
-    default: "3.11"
 runs:
   using: "composite"
   steps:
