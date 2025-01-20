@@ -13,4 +13,4 @@ on: [push]
 #      - uses: Somerandomguy10111/actions/deptry@main
 jobs:
   call-workflow-1-in-local-repo:
-    uses: Somerandomguy10111/actions/reusable-wf.yml@main
+    uses: Somerandomguy10111/actions/.github/workflows/reusable-wf.yml@main
