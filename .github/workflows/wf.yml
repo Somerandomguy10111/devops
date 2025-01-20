@@ -2,15 +2,6 @@ name: Standard python workflows
 
 on: [push]
 
-#jobs:
-#  ToxTests:
-#    runs-on: ubuntu-latest
-#    steps:
-#      - uses: Somerandomguy10111/actions/toxtests@main
-#  Dependencies:
-#    runs-on: ubuntu-latest
-#    steps:
-#      - uses: Somerandomguy10111/actions/deptry@main
 jobs:
-  call-workflow-1-in-local-repo:
+  StdPyTests:
     uses: Somerandomguy10111/actions/.github/workflows/reusable-wf.yml@main
