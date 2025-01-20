@@ -1,6 +1,7 @@
 name: Standard python workflows
 
-on: [push]
+on:
+  workflow_call
 
 jobs:
   ToxTests:
