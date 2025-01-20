@@ -1,7 +1,7 @@
-name: Standard python workflows
+name: Action workflows
 
 on: [push]
 
 jobs:
   StdPyTests:
-    uses: Somerandomguy10111/actions/.github/workflows/reusable-wf.yml@main
+    uses: Somerandomguy10111/actions/.github/workflows/stdpy.yml@main
