@@ -4,7 +4,7 @@ runs:
   using: "composite"
   steps:
     - name: Setup standard environment
-      uses: Somerandomguy10111/actions/basepy@main
+      uses: Somerandomguy10111/devops/actions/basepy@main
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
