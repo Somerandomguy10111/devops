@@ -8,7 +8,7 @@ runs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install holytools
+        pip install toxlauncher @ git+https://github.com/Somerandomguy10111/devops
       shell: bash
     - name: Run tox tests
       run: |

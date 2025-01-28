@@ -7,7 +7,10 @@ readme = "readme.md"
 dependencies = ['tox']
 
 [tool.setuptools.packages.find]
-include = ["actions*"]
+include = ["toxlauncher*"]
 
 [project.scripts]
 tests = "toxlauncher.toxtests:main"
+
+[tool.setuptools.package-data]
+"toxlauncher" = ["*"]
