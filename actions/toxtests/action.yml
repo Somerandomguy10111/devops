@@ -12,5 +12,5 @@ runs:
       shell: bash
     - name: Run tox tests
       run: |
-        toxtests
+        tests
       shell: bash
