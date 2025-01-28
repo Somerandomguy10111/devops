@@ -1,4 +1,5 @@
 import os
+import shutil
 import sys
 
 from tox.run import run
@@ -16,6 +17,13 @@ def main():
     args = ('-c', tox_fpath , '-e', mode)
     if len(sys.argv) > 1:
         args = (*args,sys.argv[1])
+
+    build_dirpath = os.path.join(cwd, 'build')
+    if os.path.isdir(build_dirpath):
+        print(f'- Deleting build directory {build_dirpath}')
+        shutil.rmtree(build_dirpath)
+
+    print(f'-------------------------- Launching tox tests --------------------------')
     run(args)
 
 
