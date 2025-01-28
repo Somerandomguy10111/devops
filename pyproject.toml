@@ -1,0 +1,13 @@
+[project]
+name = "actions"
+version = "0.1.0"
+authors = [{name = "Daniel Hollarek", email = "daniel.hollarek@googlemail.com"}]
+description = "A very good project indeed"
+readme = "readme.md"
+dependencies = ['tox']
+
+[tool.setuptools.packages.find]
+include = ["actions*"]
+
+[project.scripts]
+tests = "actions.toxtests:main"
