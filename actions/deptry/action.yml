@@ -18,6 +18,7 @@ runs:
         fi
       shell: bash
     - name: Run tox tests
-      run: |
-        deptry .
+      run: |        
+        deptry . --pep621-dev-dependency-groups=test
       shell: bash
+
