@@ -1,5 +1,10 @@
 name: "Run deptry"
 description: "Setup Python environment and run deptry . to check for dependency issues"
+inputs:
+  options:
+    description: "Additional options for deptry command"
+    required: false
+    default: ""
 runs:
   using: "composite"
   steps:
@@ -17,8 +22,7 @@ runs:
             echo "No recognized dependency file found."
         fi
       shell: bash
-    - name: Run tox tests
-      run: |        
-        deptry . --pep621-dev-dependency-groups=test
+    - name: Run deptry tests
+      run: |
+        deptry . --pep621-dev-dependency-groups=test ${{ inputs.options }}
       shell: bash
-
