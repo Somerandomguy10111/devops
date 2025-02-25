@@ -265,7 +265,9 @@ def cli(
 
     """
 
-    default_pkg_to_module_map = {'pillow' : 'PIL', 'beautifulsoup4' : 'bs4'}
+    default_pkg_to_module_map = {'pillow' : 'PIL',
+                                 'beautifulsoup4' : 'bs4',
+                                 'progressbar' : 'progressbar2'}
     for pkg in default_pkg_to_module_map:
         module = default_pkg_to_module_map[pkg]
         package_module_name_map[pkg] = (module,)
