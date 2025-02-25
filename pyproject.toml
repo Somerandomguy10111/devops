@@ -1,16 +1,17 @@
 [project]
-name = "toxlauncher"
+name = "devops"
 version = "0.1.0"
 authors = [{name = "Daniel Hollarek", email = "daniel.hollarek@googlemail.com"}]
 description = "Launches tox tests"
 readme = "readme.md"
-dependencies = ['tox']
+dependencies = ['tox', 'deptry']
 
 [tool.setuptools.packages.find]
-include = ["toxlauncher*"]
+include = ["devops*"]
 
 [project.scripts]
-tests = "toxlauncher.toxtests:main"
+tests = "devops.toxtests:main"
+deptry = "devops.deptry:deptry"
 
 [tool.setuptools.package-data]
-"toxlauncher" = ["*"]
+"devops" = ["*"]
