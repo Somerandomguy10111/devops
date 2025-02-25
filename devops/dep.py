@@ -2,7 +2,6 @@ from __future__ import annotations
 
 import logging
 import shutil
-import sys
 from collections import defaultdict
 from importlib.metadata import version
 from pathlib import Path
@@ -15,11 +14,6 @@ from deptry.core import Core
 
 if TYPE_CHECKING:
     from collections.abc import Mapping, MutableMapping, Sequence
-
-if sys.platform == "win32":
-    from colorama import just_fix_windows_console
-
-    just_fix_windows_console()
 
 DEFAULT_EXCLUDE = ("venv", r"\.venv", r"\.direnv", "tests", r"\.git", r"setup\.py")
 DEFAULT_REQUIREMENTS_FILES = ("requirements.txt",)
