@@ -294,6 +294,3 @@ def cli(
 def deptry() -> None:
     column_size, _line_size = shutil.get_terminal_size()
     cli(max_content_width=column_size)
-
-if __name__ == "__main__":
-    deptry()
