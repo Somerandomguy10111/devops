@@ -32,7 +32,7 @@ DEFAULT_REQUIREMENTS_FILES = ("requirements.txt",)
 #         module, pkg = l.split(':')
 #         pgk_module_map[module] = pkg
 #
-#     DEFAULT_PACKAGE_MODULE_NAME_MAP = pgk_module_map
+#     DEFAULT_PACKAGE_MODULE_NAME_MAP : dict[str,str] = pgk_module_map
 
 
 class CommaSeparatedTupleParamType(click.ParamType):
@@ -281,6 +281,8 @@ def cli(
 
     """
 
+    package_module_name_map = {'pillow' : ('PIL',)}
+
     Core(
         root=root,
         config=config,
@@ -305,3 +307,6 @@ def cli(
 def deptry() -> None:
     column_size, _line_size = shutil.get_terminal_size()
     cli(max_content_width=column_size)
+
+if __name__ == "__main__":
+    deptry()
