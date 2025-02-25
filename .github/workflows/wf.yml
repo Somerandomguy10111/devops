@@ -19,4 +19,4 @@ jobs:
   ChromeInstall:
     runs-on: ubuntu-latest
     steps:
-      - uses: Somerandomguy10111/devops/actions/chrome
+      - uses: Somerandomguy10111/devops/actions/chrome@main
