@@ -24,16 +24,6 @@ if sys.platform == "win32":
 DEFAULT_EXCLUDE = ("venv", r"\.venv", r"\.direnv", "tests", r"\.git", r"setup\.py")
 DEFAULT_REQUIREMENTS_FILES = ("requirements.txt",)
 
-# with open('mapping','r') as f:
-#     content = f.read()
-#     lines= content.split('\n')
-#     pgk_module_map = {}
-#     for l in lines:
-#         module, pkg = l.split(':')
-#         pgk_module_map[module] = pkg
-#
-#     DEFAULT_PACKAGE_MODULE_NAME_MAP : dict[str,str] = pgk_module_map
-
 
 class CommaSeparatedTupleParamType(click.ParamType):
     """
@@ -281,7 +271,10 @@ def cli(
 
     """
 
-    package_module_name_map = {'pillow' : ('PIL',)}
+    default_pkg_to_module_map = {'pillow' : 'PIL'}
+    for pkg in default_pkg_to_module_map:
+        module = default_pkg_to_module_map[pkg]
+        package_module_name_map[pkg] = (module,)
 
     Core(
         root=root,
