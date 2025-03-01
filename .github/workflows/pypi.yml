@@ -12,12 +12,12 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install setuptools wheel twine
+        pip install build twine
     - name: Build and publish
       run: |
         python setup.py sdist bdist_wheel
         twine upload -u root -p '' --repository-url http://51.20.104.167:5000/root/dev/ dist/*
-        
+
 #        twine upload dist/* --repository pypi
 #      env:
 #        PYPI_API_TOKEN: ${{ secrets.PYPI_API_TOKEN }}
