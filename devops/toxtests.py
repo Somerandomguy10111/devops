@@ -1,5 +1,6 @@
 import os
 import shutil
+import subprocess
 import sys
 
 from tox.run import run
@@ -26,6 +27,9 @@ def main():
     print(f'-------------------------- Launching tox tests --------------------------')
     run(args)
 
+
+def cov():
+    subprocess.Popen('python')
 
 def is_package(dirpath : str):
     fnames = os.listdir(dirpath)
