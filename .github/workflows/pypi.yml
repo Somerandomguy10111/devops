@@ -5,7 +5,7 @@ on:
     types: [created]
 
 jobs:
-  build-n-publish:
+  build_and_publish:
     runs-on: ubuntu-latest
     steps:
     - uses: Somerandomguy10111/devops/actions/basepy@main
@@ -15,7 +15,7 @@ jobs:
         pip install build twine
     - name: Build and publish
       run: |
-        python setup.py sdist bdist_wheel
+        python -m build
         twine upload -u root -p '' --repository-url http://51.20.104.167:5000/root/dev/ dist/*
 
 #        twine upload dist/* --repository pypi
