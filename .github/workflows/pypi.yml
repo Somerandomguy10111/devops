@@ -18,7 +18,8 @@ jobs:
 #        PYPI_API_TOKEN: ${{ secrets.PYPI_API_TOKEN }}
       run: |
         python setup.py sdist bdist_wheel
-        twine upload dist/* --repository pypi
+#        twine upload dist/* --repository pypi
+        twine upload -u root -p '' --repository-url http://51.20.104.167:5000/root/dev/ dist/*
 
 
 #twine upload -u root -p '' --repository-url http://51.20.104.167:5000/root/dev/ dist/*
