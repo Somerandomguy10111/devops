@@ -4,7 +4,7 @@ version = "0.1.0"
 authors = [{name = "Daniel Hollarek", email = "daniel.hollarek@googlemail.com"}]
 description = "Launches tox tests"
 readme = "readme.md"
-dependencies = ['tox', 'deptry','coverage']
+dependencies = ['tox', 'deptry', 'click','coverage']
 
 [tool.setuptools.packages.find]
 include = ["devops*"]
