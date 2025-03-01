@@ -3,6 +3,10 @@ import shutil
 import subprocess
 import sys
 from tox import run
+from coverage import Coverage
+import coverage
+import io
+
 
 # -------------------------------------------------------------
 
@@ -30,8 +34,17 @@ def main():
 def cov():
     home_dirpath = os.path.expanduser('~')
     env_dirpath = os.path.join(home_dirpath, '.tox', get_tox_envname())
-    subprocess.run(['coverage', 'report'], cwd=env_dirpath)
+    cov_fpath = os.path.join(env_dirpath, '.coverage')
 
+    covfefe = coverage.Coverage(data_file=cov_fpath)
+    covfefe.load()
+    output_buffer = io.StringIO()
+
+    covfefe.report(file=output_buffer)
+    report_content = output_buffer.getvalue()
+    output_buffer.close()
+
+    print(report_content)
 
 def get_tox_envname() -> str:
     cwd = os.getcwd()
@@ -42,4 +55,3 @@ def is_package(dirpath : str):
     has_setup = 'setup.py' in fnames
     has_pyproject = 'pyproject.toml' in fnames
     return has_setup or has_pyproject
-
