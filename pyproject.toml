@@ -4,14 +4,14 @@ version = "0.1.0"
 authors = [{name = "Daniel Hollarek", email = "daniel.hollarek@googlemail.com"}]
 description = "Launches tox tests"
 readme = "readme.md"
-dependencies = ['tox', 'deptry', 'click', 'coverage']
+dependencies = ['tox', 'deptry','coverage']
 
 [tool.setuptools.packages.find]
 include = ["devops*"]
 
 [project.scripts]
 tests = "devops.toxtests:main"
-deps = "devops.deps:deptry"
+deptry = "devops.deptry_mod:deptry"
 cov = "devops.toxtests:cov"
 
 [tool.setuptools.package-data]
