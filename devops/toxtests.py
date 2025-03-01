@@ -2,15 +2,14 @@ import os
 import shutil
 import subprocess
 import sys
-
-from tox.run import run
+from tox import run
 
 # -------------------------------------------------------------
 
 def main():
     cwd = os.getcwd()
     os.environ['REPO_DIRPATH'] = cwd
-    os.environ['TOX_ENVNAME'] = os.path.basename(cwd)
+    os.environ['TOX_ENVNAME'] = get_tox_envname()
     mode = 'pkg' if is_package(dirpath=cwd) else 'req'
     script_dirpath = os.path.dirname(__file__)
     tox_fpath = os.path.join(script_dirpath, 'tox.ini')
@@ -25,11 +24,18 @@ def main():
         shutil.rmtree(build_dirpath)
 
     print(f'-------------------------- Launching tox tests --------------------------')
-    run(args)
+    run.run(args)
 
 
 def cov():
-    subprocess.Popen('python')
+    home_dirpath = os.path.expanduser('~')
+    env_dirpath = os.path.join(home_dirpath, '.tox', get_tox_envname())
+    subprocess.run(['coverage', 'report'], cwd=env_dirpath)
+
+
+def get_tox_envname() -> str:
+    cwd = os.getcwd()
+    return os.path.basename(cwd)
 
 def is_package(dirpath : str):
     fnames = os.listdir(dirpath)
