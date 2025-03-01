@@ -11,7 +11,7 @@ include = ["devops*"]
 
 [project.scripts]
 tests = "devops.toxtests:main"
-deptry = "devops.deptry_mod:deptry"
+mapdeptry = "devops.deptry_mod:deptry"
 cov = "devops.toxtests:cov"
 
 [tool.setuptools.package-data]
