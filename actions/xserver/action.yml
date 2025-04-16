@@ -1,0 +1,17 @@
+name: Headless Xvfb Action
+description: Launches Xvfb and sets DISPLAY for GUI testing on headless runners
+runs:
+  using: "composite"
+  steps:
+    - name: Install Xvfb
+      shell: bash
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y xvfb
+
+    - name: Start Xvfb
+      shell: bash
+      run: |
+        Xvfb :99 -screen 0 1024x768x24 > /tmp/xvfb.log 2>&1 &
+        echo "Xvfb started on display :99"
+        echo "DISPLAY=:99" >> $GITHUB_ENV
