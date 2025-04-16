@@ -20,3 +20,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: Somerandomguy10111/devops/actions/chrome@main
+  XServer:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: Somerandomguy10111/devops/actions/xserver@main
