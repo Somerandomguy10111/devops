@@ -180,17 +180,19 @@ def cli(
 
     """
 
-    default_pkg_to_module_map = {'pillow' : 'PIL',
-                                 'beautifulsoup4' : 'bs4',
-                                 'progressbar2' : 'progressbar',
-                                 'PyYAML' : 'yaml',
-                                 'scikit_learn' : 'sklearn',
-                                 'scikit-learn' : 'sklearn',
-                                 'ipython' : 'IPython'}
-    for pkg in default_pkg_to_module_map:
-        module = default_pkg_to_module_map[pkg]
-        package_module_name_map[pkg] = (module,)
+    default_pkg_to_module_map = {
+        'pillow': ('PIL',),
+        'beautifulsoup4': ('bs4',),
+        'progressbar2': ('progressbar',),
+        'PyYAML': ('yaml',),
+        'scikit_learn': ('sklearn',),
+        'scikit-learn': ('sklearn',),
+        'ipython': ('IPython',),
+        'matplotlib': ('matplotlib', 'mpl_toolkits')
+    }
 
+    for pkg, modules in default_pkg_to_module_map.items():
+        package_module_name_map[pkg] = modules
 
     Core(
         root=root,
