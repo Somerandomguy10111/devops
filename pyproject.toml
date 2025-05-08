@@ -14,5 +14,8 @@ tests = "devops.toxtests:main"
 mapdeptry = "devops.mapdeptry:deptry"
 cov = "devops.toxtests:cov"
 
+[project.optional-dependencies]
+test = ["holytools"]
+
 [tool.setuptools.package-data]
 "devops" = ["*"]
