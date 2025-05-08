@@ -74,4 +74,3 @@ if __name__ == "__main__":
     args = parser.parse_args()
     ROOT_DIRPATH = args.root
     run_unittests(start_dir=args.s, pattern=args.p)
-1
