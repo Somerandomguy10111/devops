@@ -11,6 +11,7 @@ include = ["devops*"]
 
 [project.scripts]
 tests = "devops.toxtests:main"
+toxlibs = "devops.toxtests:toxlibs"
 mapdeptry = "devops.mapdeptry:deptry"
 cov = "devops.toxtests:cov"
 
