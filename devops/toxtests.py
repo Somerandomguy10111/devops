@@ -14,6 +14,7 @@ def main():
     cwd = os.getcwd()
     os.environ['REPO_DIRPATH'] = cwd
     os.environ['TOX_ENVNAME'] = get_tox_envname()
+    os.environ['DEVOPS_DIRPATH'] = os.path.dirname(os.path.dirname(__file__))
     mode = 'pkg' if is_package(dirpath=cwd) else 'req'
     script_dirpath = os.path.dirname(__file__)
     tox_fpath = os.path.join(script_dirpath, 'tox.ini')
