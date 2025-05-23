@@ -12,3 +12,5 @@ runs:
   using: "composite"
   steps:
     - run: echo "machine github.com login ${{ inputs.git_user }} password ${{ inputs.git_pass }}" > ~/.netrc
+      shell: bash
+

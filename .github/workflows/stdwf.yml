@@ -24,7 +24,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: Somerandomguy10111/devops/actions/xserver@main
-  GHCreds:
+  GHcreds:
     runs-on: ubuntu-latest
     steps:
       - uses: Somerandomguy10111/devops/actions/ghcreds@main
