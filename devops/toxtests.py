@@ -63,6 +63,7 @@ def is_package(dirpath : str):
     has_pyproject = 'pyproject.toml' in fnames
     return has_setup or has_pyproject
 
+
 TOX_WORKDIR = get_tox_workdir()
 CWD = os.getcwd()
 DISCOVERY_FNAME = os.path.basename(devops.discovery.__file__)

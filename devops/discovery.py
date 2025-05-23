@@ -2,7 +2,7 @@ import os
 import sys
 import traceback
 import unittest
-from unittest import case
+from unittest import case, TestResult
 
 
 class DirectoryLimitedLoader(unittest.TestLoader):
@@ -56,11 +56,11 @@ class _FailedTest(case.TestCase):
         return testFailure
 
 
-def run_unittests(start_dir : str, pattern : str):
+def run_unittests(start_dir : str, pattern : str) -> TestResult:
     loader = DirectoryLimitedLoader()
     suite = loader.discover(start_dir=start_dir, pattern=pattern)
     runner = unittest.TextTestRunner()
-    runner.run(suite)
+    return runner.run(suite)
 
 
 if __name__ == "__main__":
@@ -73,4 +73,8 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
     ROOT_DIRPATH = args.root
-    run_unittests(start_dir=args.s, pattern=args.p)
+    result = run_unittests(start_dir=args.s, pattern=args.p)
+    if result.errors or result.failures:
+        exit(1)
+
+
