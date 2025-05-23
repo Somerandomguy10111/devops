@@ -1,0 +1,14 @@
+name: "Configure Git Credentials"
+description: "Sets up Git credentials using .netrc"
+inputs:
+  git_user:
+    description: "GitHub username"
+    required: true
+  git_pass:
+    description: "GitHub password or token"
+    required: true
+
+runs:
+  using: "composite"
+  steps:
+    - run: echo "machine github.com login ${{ inputs.git_user }} password ${{ inputs.git_pass }}" > ~/.netrc

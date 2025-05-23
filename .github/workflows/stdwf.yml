@@ -24,3 +24,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: Somerandomguy10111/devops/actions/xserver@main
+  GHCreds:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: Somerandomguy10111/devops/actions/ghcreds@main
+        with:
+          git_user: Somerandomguy10111
+          git_pass: ${{ secrets.DEV_EXAMPLE }}
