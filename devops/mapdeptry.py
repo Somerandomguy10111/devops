@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+import json
+import os
 import shutil
 from pathlib import Path
 from typing import TYPE_CHECKING
@@ -139,8 +141,8 @@ if TYPE_CHECKING:
     type=COMMA_SEPARATED_TUPLE,
     help="""For projects that use PEP621 and that do not use a build tool that has its own method of declaring development dependencies,
     this argument provides the option to specify which groups under [project.optional-dependencies] in pyproject.toml
-    should be considered development dependencies. For example, use `--pep621-dev-dependency-groups tests,docs` to mark the dependencies in
-    the groups 'tests' and 'docs' as development dependencies.""",
+    should be considered development dependencies. For example, use `--pep621-dev-dependency-groups toxtests,docs` to mark the dependencies in
+    the groups 'toxtests' and 'docs' as development dependencies.""",
     default=(),
     show_default=False,
 )
@@ -180,19 +182,12 @@ def cli(
 
     """
 
-    default_pkg_to_module_map = {
-        'pillow': ('PIL',),
-        'beautifulsoup4': ('bs4',),
-        'progressbar2': ('progressbar',),
-        'PyYAML': ('yaml',),
-        'scikit_learn': ('sklearn',),
-        'scikit-learn': ('sklearn',),
-        'ipython': ('IPython',),
-        'matplotlib': ('matplotlib', 'mpl_toolkits')
-    }
-
+    dirpath = os.path.dirname(__file__)
+    with open(os.path.join(dirpath, 'mapping.json'), 'r') as f:
+        content = f.read()
+        default_pkg_to_module_map = json.loads(content)
     for pkg, modules in default_pkg_to_module_map.items():
-        package_module_name_map[pkg] = modules
+        package_module_name_map[pkg.lower()] = tuple(modules)
 
     Core(
         root=root,
