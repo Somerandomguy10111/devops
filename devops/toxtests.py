@@ -14,7 +14,7 @@ def main():
     os.environ['REPO_DIRPATH'] = CWD
     os.environ['TOX_WORKDIR'] = TOX_WORKDIR
     os.environ['DISCOVERY_FPATH'] = os.path.join(os.path.dirname(__file__), DISCOVERY_FNAME)
-    mode = 'pkg' if is_package(dirpath=CWD) else 'req'
+    mode = 'pkg' if _is_package(dirpath=CWD) else 'req'
     script_dirpath = os.path.dirname(__file__)
     tox_fpath = os.path.join(script_dirpath, 'tox.ini')
 
@@ -32,7 +32,7 @@ def main():
 
 
 def cov():
-    cov_fpath = os.path.join(get_tox_workdir(), '.coverage')
+    cov_fpath = os.path.join(_get_tox_workdir(), '.coverage')
 
     covfefe = coverage.Coverage(data_file=cov_fpath)
     covfefe.load()
@@ -52,18 +52,18 @@ def toxlibs():
     print(stdout, stderr)
 
 
-def get_tox_workdir() -> str:
+def _get_tox_workdir() -> str:
     home_dirpath = os.path.expanduser('~')
     env_name = os.path.basename(os.getcwd())
     return os.path.join(home_dirpath, '.tox', env_name)
 
-def is_package(dirpath : str):
+def _is_package(dirpath : str):
     fnames = os.listdir(dirpath)
     has_setup = 'setup.py' in fnames
     has_pyproject = 'pyproject.toml' in fnames
     return has_setup or has_pyproject
 
 
-TOX_WORKDIR = get_tox_workdir()
+TOX_WORKDIR = _get_tox_workdir()
 CWD = os.getcwd()
 DISCOVERY_FNAME = os.path.basename(devops.discovery.__file__)
